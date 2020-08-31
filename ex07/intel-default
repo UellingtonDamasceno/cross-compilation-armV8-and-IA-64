@@ -1,0 +1,49 @@
+	.file	"code.c"
+	.text
+	.globl	main
+	.type	main, @function
+main:
+.LFB0:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	subq	$12336, %rsp
+	movl	%edi, -12324(%rbp)
+	movq	%rsi, -12336(%rbp)
+	movq	%fs:40, %rax
+	movq	%rax, -8(%rbp)
+	xorl	%eax, %eax
+	movl	$0, -12308(%rbp)
+	jmp	.L2
+.L3:
+	movl	-12308(%rbp), %eax
+	cltq
+	movl	-12304(%rbp,%rax,4), %edx
+	movl	-12308(%rbp), %eax
+	cltq
+	movl	-8208(%rbp,%rax,4), %eax
+	addl	%eax, %edx
+	movl	-12308(%rbp), %eax
+	cltq
+	movl	%edx, -4112(%rbp,%rax,4)
+	addl	$1, -12308(%rbp)
+.L2:
+	cmpl	$1023, -12308(%rbp)
+	jle	.L3
+	movl	$0, %eax
+	movq	-8(%rbp), %rcx
+	xorq	%fs:40, %rcx
+	je	.L5
+	call	__stack_chk_fail@PLT
+.L5:
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE0:
+	.size	main, .-main
+	.ident	"GCC: (Ubuntu 8.4.0-1ubuntu1~18.04) 8.4.0"
+	.section	.note.GNU-stack,"",@progbits
