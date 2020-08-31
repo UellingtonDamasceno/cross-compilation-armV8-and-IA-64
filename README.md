@@ -1,6 +1,6 @@
 # Compilação cruzada para ARMv8 e Intel IA-64
 
-Esse é um breve tutorial de como instalar o GCC para permitir compilação cruzada (cross-compiling) afim de gerar códigos assembly para mais de um processador alvo.
+Esse é um breve tutorial de como instalar o compiladr GCC e configura-lo para permitir compilação cruzada (cross-compiling) a fim de gerar códigos assembly para processadores de arquitetura ARM-V8 e Intel IA-64 em sistemas operacionais baseado em Linux. 
 
 ### Sumário
 - [Motivação](#motivação)
