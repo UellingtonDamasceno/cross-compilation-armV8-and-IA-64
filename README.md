@@ -1,25 +1,29 @@
-#Compilação cruzada para ARMv8 e Intel IA-64
+# Compilação cruzada para ARMv8 e Intel IA-64
 
 Esse é um breve tutorial de como instalar o GCC para permitir compilação cruzada (cross-compiling) afim de gerar códigos assembly para mais de um processador alvo.
 
 ### Sumário
-- [Motivação](#motivation)
-- [Requisitos](#requirements)
-- [Instalação manual](#manual-installation)
-   - [ARM (32 bits)](#arm32bits)
-   - [ARM-V8 (64 bits)](#arm64bits)
-   - [Intel IA-64](#intel)
-- [Instalação com Makefile](#makefile-installation)
-- [Gerar assembly](#assembly)
-- [Observações](#observations)
-- [Libs extras](#extra-libs)
+- [Motivação](#motivação)
+- [Requisitos](#requisitos)
+- [Instalação manual](#instalação-manual)
+   - [ARM (32 bits)]
+   - [ARM-V8 (64 bits)]
+   - [Intel IA-64](#intel-ia-64)
+- [Instalação com Makefile](#instalação-com-makefile)
+- [Gerar assembly](#gerar-assembly)
+- [Observações](#observações)
+- [Libs extras](#libs-extras)
+
+----
 
 ## Motivação
 
 ## Requisitos
 
 ## Instalação manual
-
+#### ARM (32 bits)
+#### ARM-V8 (64 bits)
+#### Intel IA-64
 ## Instalação com Makefile
 
 ## Gerar assembly
