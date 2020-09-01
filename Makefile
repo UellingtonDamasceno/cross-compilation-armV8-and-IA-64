@@ -15,7 +15,7 @@ install-intel-compiler:
 	@sudo apt install gcc-8-multilib gcc-8
 
 install-arm32-cross-compiler:
-	@sudo apt install gcc-8-multilib-arm-linux-gnueabi gcc-8-multilib-arm-linux-gnueabihf gcc-8-arm-linux-gnueabihf
+	@sudo apt install libc6-dev-armhf-cross gcc-8-arm-linux-gnueabihf
 
 install-arm64-cross-compiler:
 	@sudo apt install libc6-dev-arm64-cross gcc-8-aarch64-linux-gnu
