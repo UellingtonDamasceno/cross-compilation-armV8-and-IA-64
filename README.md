@@ -13,6 +13,8 @@ baseados em Linux.
    - [ARM-V8 (64 bits)](#arm-v8-64-bits)
    - [Intel IA-64](#intel-ia-64)
 - [Instalação com Makefile](#instalação-com-makefile)
+   - [Instalação completa](#instalação-completa)
+   - [Instalação individual](#instalação-individual)
 - [Gerar assembly](#gerar-assembly)
 - [Observações](#observações)
 
@@ -61,16 +63,18 @@ replicarem os resultados obtidos em cada arquitetura.
       sudo apt install libc6-dev gcc-8
       
 ## Instalação com Makefile 
-   > Nota: 
-   >
-   > Os passos a seguir fazem uso do utilitário GNU make
-   > verifique se tem ele instalado em seu sitema executando
-   > o seguinte código em seu terminal:
-   >> make --version
-   >
-   > Caso não tenha o GNU maker utilize o seguite comando:
-   >> sudo apt install make makedev
-  
+
+Os passos a seguir fazem uso do utilitário GNU make
+verifique se tem ele instalado em seu sitema executando
+o seguinte código em seu terminal:
+
+   > make --version
+   
+Caso não tenha o GNU maker utilize o seguite comando:
+
+   > sudo apt install make makedev
+ 
+### Instalação completa
    
 Para instalar todos compiladores de uma unica vez. 
 
@@ -81,7 +85,9 @@ Para instalar todos compiladores de uma unica vez.
    > Ao utilizar o comando anterior será necessário 
    > confirmar a intenção de instalação por 3 vezes,
    > sendo uma para cada compilador. 
-   
+
+#### Instalação individual
+
 Instalar somente o gcc-8 utilize:
 
       sudo make install-intel-compiler
