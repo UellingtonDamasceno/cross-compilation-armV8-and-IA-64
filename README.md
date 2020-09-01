@@ -101,6 +101,20 @@ Instalar o GCC para arm64 utilize
       sudo make install-arm64-cross-compiler
      
 ## Gerar assembly
+   Após ter instalado todos os compiladores é possível gerar 
+   código assembly de todos exemplos desse repositório utilizando 
+   o seguinte comando:
+      
+      make generate-all-assembly-code
+      
+   Também é possivel gerar apenas para uma única arquitetura por vez. 
    
+      make generate-assembly-intel
+      ou 
+      make generete-assembly-arm32
+      ou 
+      make generate-assembly-arm64
+      
+   > Lembando que o compilador deverá está instalado, caso contário dará erro. 
    
 ## Observações
