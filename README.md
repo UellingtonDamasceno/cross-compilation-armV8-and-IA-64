@@ -32,12 +32,38 @@ e têm maneiras diferentes de execução de código.
 
 ## Requisitos
 
-## Instalação manual
-#### ARM (32 bits)
-#### ARM-V8 (64 bits)
-#### Intel IA-64
-## Instalação com Makefile
+O presente tutorial foi produzido utilizando as seguintes configurações 
+e garante funcionamento para sistemas que possuem configurações semelhantes
+ou que tenha a mesma versão do Ubuntu. 
 
+
+      Distro: Linux Mint 19.3 Tricia
+      Base: Ubuntu 18.04
+      Kernel: 5.4.0-42-generic x86_64
+      Processador: Intel Core i3-4005U
+   
+
+## Instalação manual
+
+Os passos a seguir define a ordem de comandos que devem ser execultados para 
+replicar os resultados obtidos em cada arquitetura. 
+
+#### ARM (32 bits)
+      
+      sudo apt install libc6-dev-armhf-cross
+      sudo apt install gcc-8-arm-linux-gnueabihf
+      
+#### ARM-V8 (64 bits)
+      
+      sudo apt install libc6-dev-arm64-cross
+      sudo apt install gcc-8-aarch64-linux-gnu
+      
+#### Intel IA-64
+      
+      sudo apt install libc6-dev gcc-8
+      
+## Instalação com Makefile
+   
 ## Gerar assembly
 
 ## Observações
