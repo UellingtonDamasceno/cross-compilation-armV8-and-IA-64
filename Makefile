@@ -37,16 +37,16 @@ generate-all-assambly-code:	generate-assembly-arm32 generate-assembly-arm64 gene
 
 generate-assembly-arm32:
 	@echo "Gerando assembly para arquitetura ARM-32 bits."
-	@for dir in ./ex*/; do cd $${dir}; $(arm32-compiler) -o arm32-default $(src) -S -march=armv8-a; $(arm32-compiler) -o arm32-otimized-O1 $(src) -O1 -S -march=armv8-a; $(arm32-compiler) -o arm32-otimized-O2 $(src) -O2 -S -march=armv8-a; $(arm32-compiler) -o arm32-otimized-O3 $(src) -O3 -S -march=armv8-a; cd ..; done;
+	@for dir in ./ex*/; do cd $${dir}; $(arm32-compiler) -o arm32-default.s $(src) -S -march=armv8-a; $(arm32-compiler) -o arm32-otimized-O1.s $(src) -O1 -S -march=armv8-a; $(arm32-compiler) -o arm32-otimized-O2.s $(src) -O2 -S -march=armv8-a; $(arm32-compiler) -o arm32-otimized-O3.s $(src) -O3 -S -march=armv8-a; cd ..; done;
 
 generate-assembly-arm64:
 	@echo "Gerando assembly para arquitetura ARM-64 bits."
-	@for dir in ./ex*/; do cd $${dir}; $(arm64-compiler) -o arm64-default $(src) -S; $(arm64-compiler) -o arm64-otimized-O1 $(src) -O1 -S; $(arm64-compiler) -o arm64-otimized-O2 $(src) -O2 -S; $(arm64-compiler) -o arm64-otimized-O3 $(src) -O3 -S; cd ..; done;
+	@for dir in ./ex*/; do cd $${dir}; $(arm64-compiler) -o arm64-default.s $(src) -S; $(arm64-compiler) -o arm64-otimized-O1.s $(src) -O1 -S; $(arm64-compiler) -o arm64-otimized-O2.s $(src) -O2 -S; $(arm64-compiler) -o arm64-otimized-O3.s $(src) -O3 -S; cd ..; done;
 
 
 generate-assembly-intel:
 	@echo "Gerando assembly para arquitetura Intel."
-	@for dir in ./ex*/; do cd $${dir}; $(intel-compiler) -o intel-default $(src) -S; $(intel-compiler) -o intel-otimized-O1 $(src) -S -O1; $(intel-compiler) -o intel-otimized-O2 $(src) -S -O2; $(intel-compiler) -o intel-otimized-O3 $(src) -S -O3; cd ..; done;
+	@for dir in ./ex*/; do cd $${dir}; $(intel-compiler) -o intel-default.s $(src) -S -masm=intel; $(intel-compiler) -o intel-otimized-O1.s $(src) -S -O1 -masm=intel; $(intel-compiler) -o intel-otimized-O2.s $(src) -S -O2 -masm=intel; $(intel-compiler) -o intel-otimized-O3.s $(src) -S -O3 -masm=intel; cd ..; done;
 
 clean:
 	@for dir in ./ex*/; do cd $${dir}; find . -type f -not \( -name '*.c' -or -name '*.md' \) -delete; cd ..; done;
