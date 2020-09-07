@@ -68,11 +68,11 @@ Os passos a seguir fazem uso do utilitário GNU make
 verifique se tem ele instalado em seu sitema executando
 o seguinte código em seu terminal:
 
-   > make --version
+      make --version
    
 Caso não tenha o GNU maker utilize o seguite comando:
 
-   > sudo apt install make makedev
+      sudo apt install make makedev
  
 ### Instalação completa
    
@@ -96,7 +96,7 @@ Instalar o GCC para arm32 utilize:
       
       sudo make install-arm32-cross-compiler
 
-Instalar o GCC para arm64 utilize
+Instalar o GCC para arm64 utilize:
       
       sudo make install-arm64-cross-compiler
      
@@ -109,12 +109,21 @@ Instalar o GCC para arm64 utilize
       
    Também é possivel gerar apenas para uma única arquitetura por vez. 
    
-      make generate-assembly-intel
-      ou 
       make generete-assembly-arm32
-      ou 
       make generate-assembly-arm64
-      
+      make generate-assembly-intel
+   
    > Lembando que o compilador deverá está instalado, caso contário dará erro. 
    
 ## Observações
+   Os pacotes "libc-6-dev", "libc6-dev-armhf-cross" e "libc6-dev-arm64-cross"
+   comtêm os links simbóĺicos, cabeçalhos, e arquivos objeto nécessarios para 
+   compilar e vincular programas que usam a biblioteca C padrão. Sem elas não é 
+   possível gerar arquivos executáveis, e por isso, os seguintes comandos do 
+   Makefile apresentarão erros se executados, caso elas não tenham sido
+   instaladas: 
+     
+   - make compile-arm32
+   - make compile-arm64
+   - make compile-intel
+   
