@@ -22,13 +22,28 @@
 main:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
-	@ link register save eliminated.
-	mov	r3, #1024
+	push	{r4, r5, r6, lr}
+	mov	r0, #4096
+	bl	malloc(PLT)
+	mov	r6, r0
+	mov	r0, #4096
+	bl	malloc(PLT)
+	subs	r4, r6, #4
+	subs	r5, r0, #4
+	addw	r6, r6, #4092
 .L2:
-	subs	r3, r3, #1
+	bl	rand(PLT)
+	str	r0, [r4, #4]!
+	bl	rand(PLT)
+	str	r0, [r5, #4]!
+	cmp	r4, r6
 	bne	.L2
+	mov	r3, #1024
+.L3:
+	subs	r3, r3, #1
+	bne	.L3
 	movs	r0, #0
-	bx	lr
+	pop	{r4, r5, r6, pc}
 	.size	main, .-main
 	.ident	"GCC: (Ubuntu/Linaro 8.4.0-1ubuntu1~18.04) 8.4.0"
 	.section	.note.GNU-stack,"",%progbits

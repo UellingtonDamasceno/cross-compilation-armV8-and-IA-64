@@ -24,9 +24,15 @@
 main:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
-	@ link register save eliminated.
-	movs	r0, #0
-	bx	lr
+	push	{r4, lr}
+	mov	r4, #1024
+.L2:
+	bl	rand(PLT)
+	bl	rand(PLT)
+	subs	r4, r4, #1
+	bne	.L2
+	mov	r0, r4
+	pop	{r4, pc}
 	.size	main, .-main
 	.ident	"GCC: (Ubuntu/Linaro 8.4.0-1ubuntu1~18.04) 8.4.0"
 	.section	.note.GNU-stack,"",%progbits

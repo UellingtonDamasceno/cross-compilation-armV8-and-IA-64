@@ -4,16 +4,27 @@
 	.globl	main
 	.type	main, @function
 main:
-.LFB0:
+.LFB18:
 	.cfi_startproc
-	mov	eax, 1024
+	push	rbx
+	.cfi_def_cfa_offset 16
+	.cfi_offset 3, -16
+	mov	ebx, 1024
 .L2:
-	sub	eax, 1
+	call	rand@PLT
+	call	rand@PLT
+	sub	ebx, 1
 	jne	.L2
+	mov	eax, 1024
+.L3:
+	sub	eax, 1
+	jne	.L3
 	mov	eax, 0
+	pop	rbx
+	.cfi_def_cfa_offset 8
 	ret
 	.cfi_endproc
-.LFE0:
+.LFE18:
 	.size	main, .-main
 	.ident	"GCC: (Ubuntu 8.4.0-1ubuntu1~18.04) 8.4.0"
 	.section	.note.GNU-stack,"",@progbits

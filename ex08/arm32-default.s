@@ -22,9 +22,9 @@
 main:
 	@ args = 0, pretend = 0, frame = 24600
 	@ frame_needed = 1, uses_anonymous_args = 0
-	push	{r7, lr}
+	push	{r4, r7, lr}
 	sub	sp, sp, #24576
-	sub	sp, sp, #24
+	sub	sp, sp, #28
 	add	r7, sp, #0
 	add	r3, r7, #24
 	subs	r3, r3, #20
@@ -32,11 +32,11 @@ main:
 	add	r3, r7, #24
 	subs	r3, r3, #24
 	str	r1, [r3]
-	ldr	r1, .L6
+	ldr	r4, .L8
 .LPIC0:
-	add	r1, pc
-	ldr	r3, .L6+4
-	ldr	r3, [r1, r3]
+	add	r4, pc
+	ldr	r3, .L8+4
+	ldr	r3, [r4, r3]
 	ldr	r3, [r3]
 	add	r2, r7, #24576
 	add	r2, r2, #20
@@ -47,6 +47,9 @@ main:
 	str	r2, [r3]
 	b	.L2
 .L3:
+	bl	rand(PLT)
+	vmov	s15, r0	@ int
+	vcvt.f64.s32	d7, s15
 	add	r3, r7, #24
 	subs	r3, r3, #8
 	add	r2, r7, #24
@@ -54,18 +57,11 @@ main:
 	ldr	r2, [r2]
 	lsls	r2, r2, #3
 	add	r3, r3, r2
-	vldr.64	d6, [r3]
+	vstr.64	d7, [r3]
+	bl	rand(PLT)
+	vmov	s15, r0	@ int
+	vcvt.f64.s32	d7, s15
 	add	r3, r7, #8192
-	add	r3, r3, #24
-	subs	r3, r3, #8
-	add	r2, r7, #24
-	subs	r2, r2, #12
-	ldr	r2, [r2]
-	lsls	r2, r2, #3
-	add	r3, r3, r2
-	vldr.64	d7, [r3]
-	vadd.f64	d7, d6, d7
-	add	r3, r7, #16384
 	add	r3, r3, #24
 	subs	r3, r3, #8
 	add	r2, r7, #24
@@ -87,26 +83,72 @@ main:
 	ldr	r3, [r3]
 	cmp	r3, #1024
 	blt	.L3
+	add	r3, r7, #24
+	subs	r3, r3, #16
+	movs	r2, #0
+	str	r2, [r3]
+	b	.L4
+.L5:
+	add	r3, r7, #24
+	subs	r3, r3, #8
+	add	r2, r7, #24
+	subs	r2, r2, #16
+	ldr	r2, [r2]
+	lsls	r2, r2, #3
+	add	r3, r3, r2
+	vldr.64	d6, [r3]
+	add	r3, r7, #8192
+	add	r3, r3, #24
+	subs	r3, r3, #8
+	add	r2, r7, #24
+	subs	r2, r2, #16
+	ldr	r2, [r2]
+	lsls	r2, r2, #3
+	add	r3, r3, r2
+	vldr.64	d7, [r3]
+	vadd.f64	d7, d6, d7
+	add	r3, r7, #16384
+	add	r3, r3, #24
+	subs	r3, r3, #8
+	add	r2, r7, #24
+	subs	r2, r2, #16
+	ldr	r2, [r2]
+	lsls	r2, r2, #3
+	add	r3, r3, r2
+	vstr.64	d7, [r3]
+	add	r3, r7, #24
+	subs	r3, r3, #16
+	add	r2, r7, #24
+	subs	r2, r2, #16
+	ldr	r2, [r2]
+	adds	r2, r2, #1
+	str	r2, [r3]
+.L4:
+	add	r3, r7, #24
+	subs	r3, r3, #16
+	ldr	r3, [r3]
+	cmp	r3, #1024
+	blt	.L5
 	movs	r3, #0
 	mov	r0, r3
-	ldr	r3, .L6+4
-	ldr	r3, [r1, r3]
+	ldr	r3, .L8+4
+	ldr	r3, [r4, r3]
 	add	r2, r7, #24576
 	add	r2, r2, #20
 	ldr	r2, [r2]
 	ldr	r3, [r3]
 	cmp	r2, r3
-	beq	.L5
+	beq	.L7
 	bl	__stack_chk_fail(PLT)
-.L5:
+.L7:
 	add	r7, r7, #24576
-	adds	r7, r7, #24
+	adds	r7, r7, #28
 	mov	sp, r7
 	@ sp needed
-	pop	{r7, pc}
-.L7:
+	pop	{r4, r7, pc}
+.L9:
 	.align	2
-.L6:
+.L8:
 	.word	_GLOBAL_OFFSET_TABLE_-(.LPIC0+4)
 	.word	__stack_chk_guard(GOT)
 	.size	main, .-main

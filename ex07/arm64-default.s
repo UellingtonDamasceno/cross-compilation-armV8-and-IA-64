@@ -7,19 +7,19 @@
 main:
 .LFB0:
 	.cfi_startproc
-	mov	x16, 12336
+	mov	x16, 8240
 	sub	sp, sp, x16
-	.cfi_def_cfa_offset 12336
+	.cfi_def_cfa_offset 8240
 	stp	x29, x30, [sp]
-	.cfi_offset 29, -12336
-	.cfi_offset 30, -12328
+	.cfi_offset 29, -8240
+	.cfi_offset 30, -8232
 	mov	x29, sp
 	str	w0, [sp, 28]
 	str	x1, [sp, 16]
 	adrp	x0, :got:__stack_chk_guard
 	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
 	ldr	x1, [x0]
-	str	x1, [sp, 12328]
+	str	x1, [sp, 8232]
 	mov	x1,0
 	str	wzr, [sp, 36]
 	b	.L2
@@ -28,15 +28,11 @@ main:
 	lsl	x0, x0, 2
 	add	x1, sp, 40
 	ldr	w1, [x1, x0]
-	ldrsw	x0, [sp, 36]
-	lsl	x0, x0, 2
-	add	x2, sp, 4096
-	add	x2, x2, 40
-	ldr	w0, [x2, x0]
+	ldr	w0, [sp, 28]
 	add	w2, w1, w0
 	ldrsw	x0, [sp, 36]
 	lsl	x0, x0, 2
-	add	x1, sp, 8192
+	add	x1, sp, 4096
 	add	x1, x1, 40
 	str	w2, [x1, x0]
 	ldr	w0, [sp, 36]
@@ -49,7 +45,7 @@ main:
 	mov	w0, 0
 	adrp	x1, :got:__stack_chk_guard
 	ldr	x1, [x1, #:got_lo12:__stack_chk_guard]
-	ldr	x2, [sp, 12328]
+	ldr	x2, [sp, 8232]
 	ldr	x1, [x1]
 	eor	x1, x2, x1
 	cmp	x1, 0
@@ -57,7 +53,7 @@ main:
 	bl	__stack_chk_fail
 .L5:
 	ldp	x29, x30, [sp]
-	mov	x16, 12336
+	mov	x16, 8240
 	add	sp, sp, x16
 	.cfi_restore 29
 	.cfi_restore 30

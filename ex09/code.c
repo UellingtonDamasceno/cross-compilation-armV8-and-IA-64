@@ -11,6 +11,11 @@ int main (int argc, char** argv) {
 	y= (int *) malloc(VECTORSIZE*sizeof(int));
 	z= (int *) malloc(VECTORSIZE*sizeof(int));
 
+	for (int i = 0; i < VECTORSIZE; i++){
+		x[i] = rand();
+		y[i] = rand();
+	}	
+
 	for (i=0; i<VECTORSIZE; i++)
 		*(z+i) = *(x+i) + *(y+i);
 }

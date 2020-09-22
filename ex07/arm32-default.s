@@ -20,10 +20,10 @@
 	.fpu vfpv3-d16
 	.type	main, %function
 main:
-	@ args = 0, pretend = 0, frame = 12304
+	@ args = 0, pretend = 0, frame = 8208
 	@ frame_needed = 1, uses_anonymous_args = 0
 	push	{r7, lr}
-	sub	sp, sp, #12288
+	sub	sp, sp, #8192
 	sub	sp, sp, #16
 	add	r7, sp, #0
 	add	r3, r7, #16
@@ -38,7 +38,7 @@ main:
 	ldr	r3, .L6+4
 	ldr	r3, [r1, r3]
 	ldr	r3, [r3]
-	add	r2, r7, #12288
+	add	r2, r7, #8192
 	add	r2, r2, #12
 	str	r3, [r2]
 	add	r3, r7, #16
@@ -52,16 +52,12 @@ main:
 	add	r2, r7, #16
 	subs	r2, r2, #8
 	ldr	r2, [r2]
-	ldr	r0, [r3, r2, lsl #2]
+	ldr	r2, [r3, r2, lsl #2]
+	add	r3, r7, #16
+	subs	r3, r3, #12
+	ldr	r3, [r3]
+	adds	r0, r2, r3
 	add	r3, r7, #4096
-	add	r3, r3, #16
-	subs	r3, r3, #4
-	add	r2, r7, #16
-	subs	r2, r2, #8
-	ldr	r2, [r2]
-	ldr	r3, [r3, r2, lsl #2]
-	add	r0, r0, r3
-	add	r3, r7, #8192
 	add	r3, r3, #16
 	subs	r3, r3, #4
 	add	r2, r7, #16
@@ -85,7 +81,7 @@ main:
 	mov	r0, r3
 	ldr	r3, .L6+4
 	ldr	r3, [r1, r3]
-	add	r2, r7, #12288
+	add	r2, r7, #8192
 	add	r2, r2, #12
 	ldr	r2, [r2]
 	ldr	r3, [r3]
@@ -93,7 +89,7 @@ main:
 	beq	.L5
 	bl	__stack_chk_fail(PLT)
 .L5:
-	add	r7, r7, #12288
+	add	r7, r7, #8192
 	adds	r7, r7, #16
 	mov	sp, r7
 	@ sp needed

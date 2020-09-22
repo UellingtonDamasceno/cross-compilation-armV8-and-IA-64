@@ -11,28 +11,26 @@ main:
 	.cfi_offset 6, -16
 	mov	rbp, rsp
 	.cfi_def_cfa_register 6
-	sub	rsp, 12336
-	mov	DWORD PTR -12324[rbp], edi
-	mov	QWORD PTR -12336[rbp], rsi
+	sub	rsp, 8240
+	mov	DWORD PTR -8228[rbp], edi
+	mov	QWORD PTR -8240[rbp], rsi
 	mov	rax, QWORD PTR fs:40
 	mov	QWORD PTR -8[rbp], rax
 	xor	eax, eax
-	mov	DWORD PTR -12308[rbp], 0
+	mov	DWORD PTR -8212[rbp], 0
 	jmp	.L2
 .L3:
-	mov	eax, DWORD PTR -12308[rbp]
+	mov	eax, DWORD PTR -8212[rbp]
 	cdqe
-	mov	edx, DWORD PTR -12304[rbp+rax*4]
-	mov	eax, DWORD PTR -12308[rbp]
-	cdqe
-	mov	eax, DWORD PTR -8208[rbp+rax*4]
+	mov	edx, DWORD PTR -8208[rbp+rax*4]
+	mov	eax, DWORD PTR -8228[rbp]
 	add	edx, eax
-	mov	eax, DWORD PTR -12308[rbp]
+	mov	eax, DWORD PTR -8212[rbp]
 	cdqe
 	mov	DWORD PTR -4112[rbp+rax*4], edx
-	add	DWORD PTR -12308[rbp], 1
+	add	DWORD PTR -8212[rbp], 1
 .L2:
-	cmp	DWORD PTR -12308[rbp], 1023
+	cmp	DWORD PTR -8212[rbp], 1023
 	jle	.L3
 	mov	eax, 0
 	mov	rcx, QWORD PTR -8[rbp]
